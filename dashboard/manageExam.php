@@ -281,7 +281,7 @@ require_once('./header.php');
                             if ($delete) {
                                 echo "
                                                 <script>
-                                                  alert('Class removed!');
+                                                  alert('Exam removed!');
                                                   window.location.href='./manageExam.php';
                                                 </script>";
                             }else {
