@@ -165,17 +165,17 @@ require_once('./header.php');
             <div class="modal-body">
 
                 <?php
-                    if(isset($_POST['conduct'])){
-                        $examid=$_POST['examid'];
-                        $examname=$_POST['name'];
-                        $subject=$_POST['subject'];
-                        $class=$_POST['class'];
-                        $date=$_POST['date'];
-                        $notify=$_POST['notify'];
-                        if($examid=='' or $examname=='' or $subject=='' or $class=='' or $date=='' or $notify==''){
-                            echo "<div style='background:#D12538;color:#fff; padding:10px;'>Please fill in all the details</div>";
-                            echo "<script>alert('Please fill in all the details!');</script>";
-                        }else{
+                if(isset($_POST['conduct'])){
+                    $examid=$_POST['examid'];
+                    $examname=$_POST['name'];
+                    $subject=$_POST['subject'];
+                    $class=$_POST['class'];
+                    $date=$_POST['date'];
+                    $notify=$_POST['notify'];
+                    if($examid=='' or $examname=='' or $subject=='' or $class=='' or $date=='' or $notify==''){
+                        echo "<div style='background:#D12538;color:#fff; padding:10px;'>Please fill in all the details</div>";
+                        echo "<script>alert('Please fill in all the details!');</script>";
+                    }else{
 
                         if($class!='other'){
 
@@ -209,37 +209,37 @@ require_once('./header.php');
                             echo "<script>alert('Please select a valid class!');</script>";
                         }
 
-                        }
                     }
+                }
                 ?>
                 <form method='post'>
-                        <input type='text' name='examid'  placeholder='Exam ID' class='form-control' required><br>
-                        <input type='text' name='name' placeholder='Exam Name' class='form-control' required><br>
-                        <input type='text' name='subject' placeholder='Subject' class='form-control' required><br>
-                        <select class='form-control' name='class' title="class" required>
-                            <?php
-                            $api=new API();
-                            $data=array('institute'=>$_SESSION['client']['institute']);
-                            $retrieve=$api->retrieveClass($data);
-                            if($retrieve->count()){
-                                foreach($retrieve as $document){
+                    <input type='text' name='examid'  placeholder='Exam ID' class='form-control' required><br>
+                    <input type='text' name='name' placeholder='Exam Name' class='form-control' required><br>
+                    <input type='text' name='subject' placeholder='Subject' class='form-control' required><br>
+                    <select class='form-control' name='class' title="class" required>
+                        <?php
+                        $api=new API();
+                        $data=array('institute'=>$_SESSION['client']['institute']);
+                        $retrieve=$api->retrieveClass($data);
+                        if($retrieve->count()){
+                            foreach($retrieve as $document){
 
-                                    echo "<option value='".$document['class']."'>".$document['class']."</option>";
+                                echo "<option value='".$document['class']."'>".$document['class']."</option>";
 
-                                }
                             }
-                            ?>
-                            <option value='other'>Other Class</option>
-                        </select><br>
-                        <input type='date' name="date" class='form-control' placeholder="Date of Examination" required><br>
-                        <b style='color: red;'>*You can notify students later as well</b>
-                        <select class='form-control' name='notify' title='notify' required>
-                            <option value='yes'>Notify all students</option>
-                            <option value='yes'>Yes</option>
-                            <option value='no'>No</option>
-                        </select><br>
+                        }
+                        ?>
+                        <option value='other'>Other Class</option>
+                    </select><br>
+                    <input type='date' name="date" class='form-control' placeholder="Date of Examination" required><br>
+                    <b style='color: red;'>*You can notify students later as well</b>
+                    <select class='form-control' name='notify' title='notify' required>
+                        <option value='yes'>Notify all students</option>
+                        <option value='yes'>Yes</option>
+                        <option value='no'>No</option>
+                    </select><br>
 
-                        <input type='submit' name='conduct' class="btn btn-info btn-block" >
+                    <input type='submit' name='conduct' class="btn btn-info btn-block" >
 
                 </form>
             </div>
@@ -251,6 +251,62 @@ require_once('./header.php');
     </div>
 </div>
 <!--conductexam modal ended-->
+
+
+<!--Modal content DeleteExam-->
+<div class="modal fade" id="deleteexam" role="dialog">
+    <div class="modal-dialog modal-lg" style=''>
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete Exam</h4>
+            </div>
+            <div class="modal-body">
+
+                <form method='post'>
+
+                    <?php
+                    if (isset($_GET['id'])) {
+
+                        $id=$_GET['id'];
+                        $api=new API();
+                        if (isset($_POST['delete'])) {
+
+                            $data = array('class' => $id );
+
+                            $delete=$api->removeExam($data);
+
+                            if ($delete) {
+                                echo "
+                                                <script>
+                                                  alert('Class removed!');
+                                                  window.location.href='./manageExam.php';
+                                                </script>";
+                            }else {
+                                echo "<script>alert('Class record could not be removed!');</script>";
+                            }
+                        }
+                        ?>
+                        <h4>Are you sure you want to delete this record? </h4>
+                        <br>
+                        <input type='submit' name='delete' class="btn btn-info btn-block" value="Delete">
+                        <?php
+                    }
+                    ?>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--DeleteExam modal ended-->
+
 
 </div>
 <!-- /#wrapper -->
@@ -272,6 +328,11 @@ require_once('./header.php');
         var id=$(el).attr('data-item');
         //alert(id);
         window.location.href = "manageStudent.php?id=" +id;
+    }
+    function deleteExam(el){
+        var id=$(el).attr('data-item');
+        //alert(id);
+        window.location.href = "manageExam.php?id=" +id;
     }
 </script>
 

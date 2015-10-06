@@ -49,6 +49,7 @@ require_once('../apis/classes.php');
                                     <div>Student(s)</div>
                                 </div>
                             </div>
+
                         </div>
                         <a href="./manageStudent.php">
                             <div class="panel-footer">

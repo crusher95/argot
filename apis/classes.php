@@ -663,6 +663,22 @@
 
         }
 
+        public function removeExam($data)
+        {
+
+
+            $m=new MongoClient("mongodb://argot:dpsnoida30@ds035260.mongolab.com:35260/argot");
+            $db=$m->argot;
+            $collection=$db->exam;
+
+            $delete=$collection->remove(array('id'=>$data['class']));
+
+            if ($delete) {
+                return 1;
+            }return 0;
+
+        }
+
     }
 
 ?>
