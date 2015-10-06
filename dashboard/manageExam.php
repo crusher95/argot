@@ -344,7 +344,7 @@ if (isset($_GET['nid'])) {
 }else if(isset($_GET['id'])){
     echo "<script type='text/javascript'>
 
-                $('#deletestudent').modal('show');
+                $('#deleteexam').modal('show');
 
                   </script>";
 }
