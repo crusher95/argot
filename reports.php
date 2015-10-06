@@ -81,7 +81,7 @@
                                            }   ?>>
                                                <td style='line-height: 200%; font-size: 16px;'><?php echo $document['student'];?></td>
                                                <td style='line-height: 200%; font-size: 16px;'><?php echo $document['subject']?></td>
-                                               <td><?php echo "<a href='generateReport.php?id=".$document['id']."&student_id=".$document['student']."' class='btn btn-primary btn-sm' style='color: #f9f2f4;'>Generate Reports</a>";?></td>
+                                               <td><?php echo "<a href='generateReport.php?id=".$document['id']."&student_id=".$document['student']."' class='btn btn-primary btn-sm' style='color: #f9f2f4;'>Generate Report</a>";?></td>
                                            </tr>
                                            <?php
                                            $i++;
@@ -97,13 +97,17 @@
                                   <?php
 
                                         }else{
+                                            $api=new API();
+
+
                                           if ($_SESSION['client']['role']=='institute') {
 
                                             echo "<h4><i class='fa fa-2x fa-paper-plane'></i><br>Seems like you have not conducted any exams yet</h4><br><h5><button class='form-control' style='background:rgb(63,138,202);color:#fff;'data-toggle='modal' data-target='#examinstitute'>Conduct Exam</button></h5>";
                                           }else{
 
                                              
-                                            echo "<h4><i class='fa fa-2x fa-paper-plane'></i><br>Seems like you have not conducted any exams yet</h4><br><button class='form-control' style='background:rgb(63,138,202);color:#fff;'data-toggle='modal' data-target='#examteacher'>Conduct Exam</button>";                                          }
+                                            echo "<h4><i class='fa fa-2x fa-paper-plane'></i><br>Seems like you have not conducted any exams yet</h4><br><button class='form-control' style='background:rgb(63,138,202);color:#fff;'data-toggle='modal' data-target='#examteacher'>Conduct Exam</button>";
+                                          }
                                              
                                         }
                                    ?>
