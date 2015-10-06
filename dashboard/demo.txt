@@ -1,0 +1,21 @@
+The format below is the format to be followed for entering students into the database.
+<!--Edit and copy paste the format below-->
+{
+    "Students": [{
+        "id": "2220130151",
+        "name": "Ram",
+        "class": "TE COMPS",
+        "mobile": "88799123",
+        "address":"sion",
+        "teacher_id":"1233424112"
+    }, {
+        "id": "222019823",
+        "name": "Nikhil",
+        "class": "BE EXTC",
+        "mobile": "78906493",
+        "address":"hostel",
+        "teacher_id":"1235623234"
+    }]
+}
+<!--Ends-->
+#similarly add details of the students further

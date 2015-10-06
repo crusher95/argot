@@ -1,0 +1,26 @@
+<component name="ProjectDictionaryState">
+  <dictionary name="crusher">
+    <words>
+      <w>addclass</w>
+      <w>addoption</w>
+      <w>addquestion</w>
+      <w>addstudent</w>
+      <w>addteacher</w>
+      <w>assignexam</w>
+      <w>examid</w>
+      <w>examname</w>
+      <w>jsonout</w>
+      <w>maxlifetime</w>
+      <w>multipstudents</w>
+      <w>newcontent</w>
+      <w>notifid</w>
+      <w>optradio</w>
+      <w>removefunc</w>
+      <w>removeoption</w>
+      <w>studentremove</w>
+      <w>submitpaper</w>
+      <w>upsert</w>
+      <w>yyyy</w>
+    </words>
+  </dictionary>
+</component>
